@@ -43,7 +43,7 @@
         не было.
          */
         const btnItems = document.querySelectorAll('.btn');
-        btnItems.forEach(item => item.classList.contains('btn-secondary') ? item.classList.remove('btn-secondary') : item.classList += 'btn-secondary');
+        btnItems.forEach(item => item.classList.contains('btn-secondary') ? item.classList.remove('btn-secondary') : item.classList.add('btn-secondary'));
 
         /*
         3. Необходимо удалить класс "dropdown-menu" у элемента, у которого
@@ -66,13 +66,14 @@
          */
 
         const element = document.getElementById('dropdownMenuButton');
-        element.setAttribute('id', 'superDropdown')
+        element.setAttribute('id', 'superDropdown');
 
         /*
         6. Добавьте атрибут data-dd со значением 3 элементу у которого существует
         атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
          */
-        
+        const elLabelledby = document.querySelector('[aria-labelledby = "dropdownMenuButton"]');
+        elLabelledby.dataset.dd = '3';
 
         /*
         7. Удалите атрибут type у элемента с классом "dropdown-toggle".
