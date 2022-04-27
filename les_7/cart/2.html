@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cart-box"></div>
+    <!--
+Дополнительное задание.
+
+Дан макет сайта
+https://www.figma.com/file/SbfOi2i4S1pIs0G6uOLPCx/shop-(Copy)?node-id=73%3A140м 
+
+В нем представлены товары, добавленные в корзину 
+
+Вам необходимо создать объект cart  в котором будет 
+1. ссылка на картинку
+2. Название товара (MANGO  PEOPLE  T-SHIRT)
+3. цена (Price: $300 	) 
+4. цвет (Color: Red)
+5. Размер (Size: Xl	)
+6. Количество (Quantity:2)
+
+Отобразить на странице 2 товара добавленных в корзину
+-->
+
+    <script>
+        "use strict";
+
+        const cart = [{
+            id: 1,
+            imgSrc: 'img/1.png',
+            name: 'MANGO  PEOPLE  T-SHIRT',
+            color: 'Red',
+            size: 'XL',
+            quantity: 2,
+            price: 300
+        },
+        {
+            id: 2,
+            imgSrc: 'img/2.png',
+            name: "MANGO  PEOPLE  T-SHIRT",
+            color: 'Red',
+            size: 'XL',
+            quantity: 2,
+            price: 300
+        }];
+
+        const cartContent = document.querySelector('.cart-box');
+
+        function createCartElement(cartElement) {
+            console.log(cartElement);
+            const createdCart = document.createElement('div');
+            createdCart.classList.add('cart');
+
+            const cartImg = document.createElement('img');
+            cartImg.src = cartElement.imgSrc;
+            cartImg.classList.add('cart__img');
+            createdCart.append(cartImg);
+
+            const cartBoxText = document.createElement('div');
+            cartBoxText.classList.add('cart__content');
+            createdCart.append(cartBoxText);
+
+            const cartHeading = document.createElement('h2');
+            cartHeading.classList.add('cart__heading');
+            cartHeading.textContent = cartElement.name;
+            cartBoxText.append(cartHeading);
+
+            const cartColor = document.createElement('p');
+            cartColor.classList.add('cart__text');
+            cartColor.textContent = `цвет ${cartElement.color}`;
+            cartBoxText.append(cartColor);
+
+            const cartQuantity = document.createElement('p');
+            cartQuantity.classList.add('cart__text');
+            cartQuantity.textContent = `количество ${cartElement.quantity}`;
+            cartBoxText.append(cartQuantity);
+
+            const cartPrice = document.createElement('p');
+            cartPrice.classList.add('product__price');
+            cartPrice.textContent = `$ ${cartElement.price.toFixed(2)}`;
+            cartBoxText.append(cartPrice);
+
+
+
+            return createdCart;
+        }
+
+        cart.forEach(element => {
+            console.log(element);
+            cartContent.append(createCartElement(element));
+        });
+    </script>
+</body>
+
+</html>
